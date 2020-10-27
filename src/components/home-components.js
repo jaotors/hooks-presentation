@@ -27,3 +27,17 @@ export const Code = ({ code, language = 'javascript' }) => {
     </SyntaxHighlighter>
   )
 }
+
+export const Group = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+export const IconBlock = styled.span`
+  width: 70px;
+  margin: 0 auto;
+  display: block;
+
+  svg {
+    color: ${props => props.color};
+  }
+`

@@ -1,62 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import 'styled-components/macro'
+import { Close as CloseIcon } from '@styled-icons/evaicons-solid'
+import { Check as CheckIcon } from '@styled-icons/boxicons-regular'
+import { HappyBeaming } from '@styled-icons/boxicons-solid'
 
 import {
   PageBlock,
   Title,
   Description,
   Code,
+  Group,
+  IconBlock,
 } from '../components/home-components'
 
-const USE_STATE_CODE = `
-import React, { useState } from 'react'
-
-const MyComponent = () => {
-  const [name, setName] = useState('')
-  
-  const handleNameChange = (e) => {
-    setName(e.target.value)
-  }
-
-  return (
-    <div>
-      <input value={name} onChange={handleNameChange} />
-      {name}
-    </div>
-  )
-}
-`
-
-const USE_EFFECT_CODE = `
-import React, { useState, useEffect } from 'react'
-
-const MyComponent = () => {
-  const [name, setName] = useState('')
-  
-  useEffect(() => {
-    console.log('console here 1')
-  }, [])
-
-  useEffect(() => {
-    console.log('console here 2')
-  }, [name])
-
-  return (
-    <div>
-      <input value={name} onChange={handleNameChange} />
-      {name}
-    </div>
-  )
-}
-`
+import {
+  USE_STATE_CODE,
+  USE_EFFECT_CODE,
+  BAD_CODE_1,
+  BAD_CODE_2,
+  GOOD_CODE_1,
+  GOOD_CODE_2,
+  CUSTOM_HOOKS_CODE,
+} from '../fixtures/sample-code'
 
 const Home = () => {
   const [page, setPage] = useState(0)
 
   useEffect(() => {
     window.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') setPage(state => ++state)
-      if (e.key === 'ArrowLeft') setPage(state => --state)
+      if (e.key === 'ArrowRight')
+        setPage(state => (state < 12 ? ++state : state))
+      if (e.key === 'ArrowLeft') setPage(state => (state > 0 ? --state : state))
+      if (e.key === 'End') setPage(12)
+      if (e.key === 'Home') setPage(0)
     })
   }, [])
 
@@ -89,6 +65,13 @@ const Home = () => {
               </a>
             </Description>
           </li>
+          <li>
+            <Description>
+              <a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/">
+                Best Practices With React Hooks
+              </a>
+            </Description>
+          </li>
         </ul>
       </PageBlock>
       <PageBlock id="2">
@@ -99,7 +82,7 @@ const Home = () => {
         </Description>
       </PageBlock>
       <PageBlock id="3">
-        <Title>Funcations that I usually use</Title>
+        <Title>Hooks that I usually use</Title>
         <ul>
           <li>
             <Description>useState</Description>
@@ -116,6 +99,90 @@ const Home = () => {
       <PageBlock id="5">
         <Title>useEffect</Title>
         <Code code={USE_EFFECT_CODE} />
+      </PageBlock>
+      <PageBlock id="6">
+        <Title>There are 2 Rules of Hooks</Title>
+      </PageBlock>
+      <PageBlock id="7">
+        <Description>Use it on Top level.</Description>
+        <Description>
+          (conditions, loop or nested functions are noppeee)
+        </Description>
+        <Group>
+          <div css={'margin: 10px;'}>
+            <IconBlock color="red">
+              <CloseIcon />
+            </IconBlock>
+            <Code code={BAD_CODE_1} />
+          </div>
+          <div css={'margin: 10px;'}>
+            <IconBlock color="green">
+              <CheckIcon />
+            </IconBlock>
+            <Code code={GOOD_CODE_1} />
+          </div>
+        </Group>
+      </PageBlock>
+      <PageBlock id="8">
+        <Description>
+          Only call hooks from React functional components
+        </Description>
+        <Group>
+          <div css={'margin: 10px;'}>
+            <IconBlock color="red">
+              <CloseIcon />
+            </IconBlock>
+            <Code code={BAD_CODE_2} />
+          </div>
+          <div css={'margin: 10px;'}>
+            <IconBlock color="green">
+              <CheckIcon />
+            </IconBlock>
+            <Code code={GOOD_CODE_2} />
+          </div>
+        </Group>
+      </PageBlock>
+      <PageBlock id="9">
+        <Title>Custom Hooks</Title>
+      </PageBlock>
+      <PageBlock id="10">
+        <Title>TADA</Title>
+        <Code code={CUSTOM_HOOKS_CODE} />
+      </PageBlock>
+      <PageBlock id="11">
+        <Title>Other Hooks</Title>
+        <Description>
+          Sorry can't discuss this now{' '}
+          <IconBlock>
+            <HappyBeaming />
+          </IconBlock>
+        </Description>
+        <ul>
+          <li>
+            <Description>useReducer</Description>
+          </li>
+          <li>
+            <Description>useCallback</Description>
+          </li>
+          <li>
+            <Description>useMemo</Description>
+          </li>
+          <li>
+            <Description>useRef</Description>
+          </li>
+          <li>
+            <Description>useImperativeHandle</Description>
+          </li>
+          <li>
+            <Description>useLayoutEffect</Description>
+          </li>
+          <li>
+            <Description>useDebugValue</Description>
+          </li>
+        </ul>
+      </PageBlock>
+      <PageBlock id="12">
+        <Title>Thanks</Title>
       </PageBlock>
     </>
   )

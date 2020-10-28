@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 const MyComponent = () => {
   const [name, setName] = useState('')
@@ -7,18 +7,29 @@ const MyComponent = () => {
     setName(e.target.value)
   }
 
+  const handleClick = useCallback(() => {
+    if (name === 'Johnny') {
+      alert('HERE COMES JOHNNY')
+    }
+  }, [name])
+
   useEffect(() => {
-    console.log('console here 1')
+    console.log('1st useEffect Name: ', name)
   }, [])
 
   useEffect(() => {
-    console.log('console here 2')
+    console.log('2nd useEffect Name: ', name)
   }, [name])
 
   return (
     <div>
-      <input value={name} onChange={handleNameChange} />
-      {name}
+      <div>
+        <input value={name} onChange={handleNameChange} />
+      </div>
+      <div>
+        <button onClick={handleClick}>Click me</button>
+      </div>
+      <p>{name}</p>
     </div>
   )
 }

@@ -16,6 +16,7 @@ import {
 import {
   USE_STATE_CODE,
   USE_EFFECT_CODE,
+  USE_CALLBACK_CODE,
   BAD_CODE_1,
   BAD_CODE_2,
   GOOD_CODE_1,
@@ -29,7 +30,7 @@ const Home = () => {
   useEffect(() => {
     window.addEventListener('keydown', e => {
       if (e.key === 'ArrowRight')
-        setPage(state => (state < 12 ? ++state : state))
+        setPage(state => (state < 14 ? ++state : state))
       if (e.key === 'ArrowLeft') setPage(state => (state > 0 ? --state : state))
       if (e.key === 'End') setPage(12)
       if (e.key === 'Home') setPage(0)
@@ -72,6 +73,20 @@ const Home = () => {
               </a>
             </Description>
           </li>
+          <li>
+            <Description>
+              <a href="https://kentcdodds.com/blog/usememo-and-usecallback">
+                When to useMemo and useCallback
+              </a>
+            </Description>
+          </li>
+          <li>
+            <Description>
+              <a href="https://dmitripavlutin.com/dont-overuse-react-usecallback/">
+                Your Guide to React.useCallback()
+              </a>
+            </Description>
+          </li>
         </ul>
       </PageBlock>
       <PageBlock id="2">
@@ -80,6 +95,7 @@ const Home = () => {
           They let you use state and other React features without writing a
           class.
         </Description>
+        <Code code={USE_STATE_CODE} />
       </PageBlock>
       <PageBlock id="3">
         <Title>Hooks that I usually use</Title>
@@ -89,6 +105,9 @@ const Home = () => {
           </li>
           <li>
             <Description>useEffect</Description>
+          </li>
+          <li>
+            <Description>useCallback</Description>
           </li>
         </ul>
       </PageBlock>
@@ -101,9 +120,13 @@ const Home = () => {
         <Code code={USE_EFFECT_CODE} />
       </PageBlock>
       <PageBlock id="6">
-        <Title>There are 2 Rules of Hooks</Title>
+        <Title>useCallback</Title>
+        <Code code={USE_CALLBACK_CODE} />
       </PageBlock>
       <PageBlock id="7">
+        <Title>There are 2 Rules of Hooks</Title>
+      </PageBlock>
+      <PageBlock id="8">
         <Description>Use it on Top level.</Description>
         <Description>
           (conditions, loop or nested functions are noppeee)
@@ -123,7 +146,7 @@ const Home = () => {
           </div>
         </Group>
       </PageBlock>
-      <PageBlock id="8">
+      <PageBlock id="9">
         <Description>
           Only call hooks from React functional components
         </Description>
@@ -142,14 +165,14 @@ const Home = () => {
           </div>
         </Group>
       </PageBlock>
-      <PageBlock id="9">
+      <PageBlock id="10">
         <Title>Custom Hooks</Title>
       </PageBlock>
-      <PageBlock id="10">
+      <PageBlock id="11">
         <Title>TADA</Title>
         <Code code={CUSTOM_HOOKS_CODE} />
       </PageBlock>
-      <PageBlock id="11">
+      <PageBlock id="12">
         <Title>Other Hooks</Title>
         <Description>
           Sorry can't discuss this now{' '}
@@ -163,9 +186,6 @@ const Home = () => {
           </li>
           <li>
             <Description>useReducer</Description>
-          </li>
-          <li>
-            <Description>useCallback</Description>
           </li>
           <li>
             <Description>useMemo</Description>
@@ -184,10 +204,10 @@ const Home = () => {
           </li>
         </ul>
       </PageBlock>
-      <PageBlock id="12">
+      <PageBlock id="13">
         <Title>Questions?</Title>
       </PageBlock>
-      <PageBlock id="13">
+      <PageBlock id="14">
         <Title>Thanks</Title>
       </PageBlock>
     </>

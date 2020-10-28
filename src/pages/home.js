@@ -159,6 +159,9 @@ const Home = () => {
         </Description>
         <ul>
           <li>
+            <Description>useContext</Description>
+          </li>
+          <li>
             <Description>useReducer</Description>
           </li>
           <li>
@@ -182,6 +185,9 @@ const Home = () => {
         </ul>
       </PageBlock>
       <PageBlock id="12">
+        <Title>Questions?</Title>
+      </PageBlock>
+      <PageBlock id="13">
         <Title>Thanks</Title>
       </PageBlock>
     </>

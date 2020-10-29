@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <>
       <PageBlock id="0">
-        <Title>REACT HOOKS base on my experience</Title>
+        <Title>REACT HOOKS based on my experience</Title>
       </PageBlock>
       <PageBlock id="1">
         <Title>Resources</Title>

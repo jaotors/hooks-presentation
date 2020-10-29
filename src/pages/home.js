@@ -32,7 +32,7 @@ const Home = () => {
       if (e.key === 'ArrowRight')
         setPage(state => (state < 14 ? ++state : state))
       if (e.key === 'ArrowLeft') setPage(state => (state > 0 ? --state : state))
-      if (e.key === 'End') setPage(12)
+      if (e.key === 'End') setPage(14)
       if (e.key === 'Home') setPage(0)
     })
   }, [])
@@ -175,7 +175,7 @@ const Home = () => {
       <PageBlock id="12">
         <Title>Other Hooks</Title>
         <Description>
-          Sorry can't discuss this now{' '}
+          Sorry can't discuss this now
           <IconBlock>
             <HappyBeaming />
           </IconBlock>

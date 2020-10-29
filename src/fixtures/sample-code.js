@@ -23,6 +23,10 @@ import React, { useState, useEffect } from 'react'
 const MyComponent = () => {
   const [name, setName] = useState('')
 
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+
   useEffect(() => {
     console.log('console here 1')
   })
